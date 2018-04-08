@@ -9,7 +9,6 @@ sub startup {
     my $c = shift;
     #$c->res->headers->header('Access-Control-Allow-Origin' => '*');
     $c->res->headers->header('x-powered-by' => 'Mojolicious (Perl)');
-    #$c->res->headers->header('Set-Cookie' => 'PLAY_SESSION');
     $c->res->headers->header('Server' => 'Ubuntu');
   });
   # Load configuration from hash returned by "my_app.conf"

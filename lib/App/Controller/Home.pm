@@ -20,10 +20,7 @@ sub index {
   my %locals = (
     title => 'Home',
     css => 'dist/accesos.min.css',
-    js_top => 'http://localhost:3000/',
-    js_bottom => 'dist/accesos.min.js',
-    menu => '[{"url" : "accesos", "nombre" : "Accesos"},{"url" : "libros", "nombre" : "Libros"}]',
-    items => '[{"subtitulo":"","items":[{"item":"Gestión de Sistemas","url":"#/sistema"},{"item":"Gestión de Usuarios","url":"#/usuario"}]}]',
+    js => 'dist/accesos.min.js',
     data => decode('utf8', encode_json \%data),
   );
   $self->render(
