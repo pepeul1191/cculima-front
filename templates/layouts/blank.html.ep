@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= %{locals}{"title"} %></title>
+  <meta charset="UTF-8">
+  <link href="<%= %{$variables}{'STATIC_URL'}.%{locals}{'css'} %>" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript">
+    var BASE_URL = '<%=%{$variables}{"BASE_URL"}%>';
+    var STATICS_URL  = '<%=%{$variables}{"STATIC_URL"}%>';
+    var DATA = JSON.parse('<%== %{locals}{"data"} %>');
+  </script>
+</head>
+<body>
+  <!-- Inicio Modal -->
+  <button type="button" class="btn btn-primary btn-lg oculto" data-toggle="modal" data-target="#modal-container"  id="btnModal" >Launch demo modal</button>
+  <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+  <!-- Fin Modal -->
+  <script type="text/javascript" src="<%=%{$variables}{'STATIC_URL'}.%{locals}{'js_bottom'} %>"></script>
+</body>
+</html>
