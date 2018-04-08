@@ -19,7 +19,7 @@ sub startup {
   # Router
   my $r = $self->routes;
   # Plugin
-  #$self->plugin('App::Plugin::SessionTrue');
+  $self->plugin('App::Plugin::SessionTrue');
   # Normal route to controller
   #$r->get('/')->to('home#index');
   $r->get('/')->to('example#welcome');
