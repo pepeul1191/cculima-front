@@ -30,3 +30,6 @@ Para imprimir variables:
 + http://stackoverflow.com/questions/20869123/json-decoding-in-perl
 + http://search.cpan.org/~shantanu/Crypt-MCrypt-0.07/lib/Crypt/MCrypt.pm
 + http://www.perlmonks.org/?node_id=1089381 (templates mojo)
++ https://stackoverflow.com/questions/44811075/perl-mojolicious-iis-routes-going-to-post-method?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
++ https://github.com/pepeul1191/mojoliciuous-pp
++ https://github.com/pepeul1191/perl-dancer-mysql-gestion
