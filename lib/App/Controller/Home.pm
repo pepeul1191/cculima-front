@@ -8,7 +8,7 @@ use Data::Dumper;
 binmode STDOUT, ':utf8';
 use App::Config::Constants;
 use App::Config::Helpers;
-use App::Helpers::Home;
+use App::Helper::Home;
 
 my $log = Mojo::Log->new;
 
@@ -16,7 +16,7 @@ sub index {
   my $self = shift;
   #$log->debug('Not sure what is happening here');
   my $helper = \%App::Config::Helpers::ViewHelpers;
-  my $HomeHelper = \%App::Helpers::Home::HomeHelper;
+  my $HomeHelper = \%App::Helper::Home::HomeHelper;
   my %data = (
     mensaje => JSON::false,
     titulo_pagina => 'Gestión de Accesos',

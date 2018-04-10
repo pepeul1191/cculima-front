@@ -8,7 +8,6 @@ our %ViewHelpers = (
     my(@csss) = @_;
     my $rpta = '';
     if(length @csss > 0){
-      print(@csss);
       for my $css(@csss){
         my $url = $constants->{'STATIC_URL'};
         my $temp = '<link rel="stylesheet" type="text/css" href="' . $url . $css . '.css"/>';

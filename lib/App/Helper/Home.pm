@@ -1,4 +1,4 @@
-package App::Helpers::Home;
+package App::Helper::Home;
 use App::Config::Constants;
 
 my $constants = \%App::Config::Constants::Data;
