@@ -5,6 +5,8 @@ use Mojo::Log;
 use utf8;
 use Encode qw(decode encode);
 use Data::Dumper;
+use REST::Client;
+use Try::Tiny;
 binmode STDOUT, ':utf8';
 use App::Config::Constants;
 use App::Config::Helpers;
@@ -34,6 +36,24 @@ sub index {
   $self->stash(locals => \%locals);
   $self->stash(helpers => \%helpers);
   $self->render(template => 'home/index');
+}
+
+sub rest {
+  my $self = shift;
+  my $sistema_id = $self->param('sistema_id');
+  try {
+    my $url = %App::Config::Constants::Data{'servicio_eventos'} . 'externo/listar';
+    my $client = REST::Client->new(); $client->GET($url);
+    my $rpta = decode('utf8', $client->responseContent());
+    $self->render(text => $rpta);
+  }
+  catch {
+    my %rpta = ();
+    $rpta{'tipo_mensaje'} = "error";
+    my @temp = ('Se ha producido un error en el cliente REST', '' . $_);
+    $rpta{'mensaje'} = [@temp];
+    $self->render(text => Encode::decode('utf8', JSON::to_json \%rpta));
+  };
 }
 
 1;

@@ -22,6 +22,7 @@ sub startup {
   # Normal route to controller
   $r->get('/')->to('home#index');
   $r->get('/departamento/listar')->to('departamento#listar');
+  $r->get('/rest/:sistema_id')->to('home#rest');
 }
 
 1;
