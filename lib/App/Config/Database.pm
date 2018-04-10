@@ -1,4 +1,4 @@
-package Config::Database;
+package App::Config::Database;
 use App::Config::Constants;
 use DBI;
 use utf8;
@@ -8,7 +8,7 @@ sub new {
   my $dbh = 0;
   if(%App::Config::Constants::Data{'ambiente'} eq 'produccion'){
     my $driver   = 'mysql';
-    my $database = 'gestion';
+    my $database = 'ubicaciones';
     my $dsn = 'dbi:'. $driver . ':db=' . $database;
     my $userid = 'root';
     my $password = '123';
@@ -18,7 +18,7 @@ sub new {
   }else{
     my $driver   = 'SQLite';
     my $database = 'db/ubicaciones.db';
-    my $dsn = 'DBI:$driver:dbname=$database';
+    my $dsn = 'DBI:' . $driver . ':dbname=' . $database;
     my $userid = '';
     my $password = '';
     $dbh = DBI->connect($dsn, $userid, $password, { RaiseError => 1 }) or die $DBI::errstr;

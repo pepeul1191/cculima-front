@@ -21,6 +21,7 @@ sub startup {
   $self->plugin('App::Plugin::SessionTrue');
   # Normal route to controller
   $r->get('/')->to('home#index');
+  $r->get('/departamento/listar')->to('departamento#listar');
 }
 
 1;
