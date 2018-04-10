@@ -8,6 +8,7 @@ use Data::Dumper;
 binmode STDOUT, ':utf8';
 use App::Config::Constants;
 use App::Config::Helpers;
+use App::Helpers::Home;
 
 my $log = Mojo::Log->new;
 
@@ -15,6 +16,7 @@ sub index {
   my $self = shift;
   #$log->debug('Not sure what is happening here');
   my $helper = \%App::Config::Helpers::ViewHelpers;
+  my $HomeHelper = \%App::Helpers::Home::HomeHelper;
   my %data = (
     mensaje => JSON::false,
     titulo_pagina => 'Gestión de Accesos',
@@ -25,21 +27,9 @@ sub index {
     data => decode('utf8', encode_json \%data),
   );
   my %helpers = (
-    css => $helper->{'loas_css'}(
-      'bower_components/bootstrap/dist/css/bootstrap.min',
-  		'bower_components/font-awesome/css/font-awesome.min',
-  		'css/style'
-    ),
-    js => $helper->{'load_js'}(
-      'bower_components/jquery/dist/jquery.min',
-      'bower_components/bootstrap/dist/js/bootstrap.min',
-    ),
+    css => $helper->{'loas_css'}($HomeHelper->{'index_css'}()),
+    js => $helper->{'load_js'}($HomeHelper->{'index_js'}()),
   );
-  $log->debug('1 +++++++++++++++++++++++++++++++++++++++++++');
-  print("\n");
-  print(Dumper($locals{'title'}));
-  print("\n");
-  $log->debug('2 +++++++++++++++++++++++++++++++++++++++++++');
   $self->stash(constants => \%App::Config::Constants::Data);
   $self->stash(locals => \%locals);
   $self->stash(helpers => \%helpers);

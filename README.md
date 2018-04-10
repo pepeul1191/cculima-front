@@ -4,12 +4,11 @@
 
     $ sudo apt install cpanminus
     $ curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
-    $ sudo cpanm Mojolicious::Plugin::SecureCORS
     $ sudo apt install libmojolicious-perl
 
 ### Instalar dependencias de Perl
 
-    $ sudo cpanm JSON REST::Client JSON::XS Crypt::MCrypt Try::Tiny DBD::SQLite Data::
+    $ sudo cpanm JSON REST::Client JSON::XS Crypt::MCrypt Try::Tiny DBD::SQLite Data::Dumper Mojolicious::Plugin::SecureCORS
 
 ### Arrancar el microservicio
 
