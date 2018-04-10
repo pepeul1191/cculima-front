@@ -9,7 +9,7 @@
 
 ### Instalar dependencias de Perl
 
-    $ sudo cpanm JSON REST::Client JSON::XS Crypt::MCrypt Try::Tiny DBD::SQLite
+    $ sudo cpanm JSON REST::Client JSON::XS Crypt::MCrypt Try::Tiny DBD::SQLite Data::
 
 ### Arrancar el microservicio
 
