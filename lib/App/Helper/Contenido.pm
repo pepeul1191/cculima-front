@@ -44,6 +44,7 @@ our %ContenidoHelper = (
       push @rpta, 'bower_components/jquery-timepicker-wvega/jquery.timepicker';
       push @rpta, 'bower_components/ckeditor/ckeditor';
       push @rpta, 'layout/app';
+      push @rpta, 'views/_table_ambiente';
       push @rpta, 'views/ambiente';
       push @rpta, 'views/concierto';
       push @rpta, 'views/exposicion';
