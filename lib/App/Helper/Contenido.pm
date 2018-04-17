@@ -48,6 +48,7 @@ our %ContenidoHelper = (
       push @rpta, 'views/ambiente';
       push @rpta, 'views/concierto';
       push @rpta, 'views/exposicion';
+      push @rpta, 'views/_table_servicio';
       push @rpta, 'views/servicio';
       push @rpta, 'views/stand_up';
       push @rpta, 'views/teatro';
