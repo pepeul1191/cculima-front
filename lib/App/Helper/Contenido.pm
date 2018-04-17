@@ -24,26 +24,33 @@ our %ContenidoHelper = (
   index_js => sub {
     my @rpta = ();
     if($constants->{'ambiente'} eq 'desarrollo'){
-      push @rpta,'bower_components/jquery/dist/jquery.min';
-      push @rpta,'bower_components/bootstrap/dist/js/bootstrap.min';
-      push @rpta,'bower_components/handlebars/handlebars.min';
-      push @rpta,'bower_components/underscore/underscore-min';
-      push @rpta,'bower_components/backbone/backbone-min';
-      push @rpta,'bower_components/backbone.marionette/lib/backbone.marionette.min';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools-core.min';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools.min';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools-interfaces.min';
-      push @rpta,'bower_components/swp-plugins/assets/js/jquery.upload';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools.chain';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools.dao';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools.autocomplete';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools.form';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools.observer';
-      push @rpta,'bower_components/swp-plugins/assets/js/mootools.grid';
-      push @rpta,'bower_components/jquery-ui/ui/widgets/datepicker';
-      push @rpta,'bower_components/jquery-timepicker-wvega/jquery.timepicker';
-      push @rpta,'bower_components/ckeditor/ckeditor';
-      push @rpta,'layout/app';
+      push @rpta, 'bower_components/jquery/dist/jquery.min';
+      push @rpta, 'bower_components/bootstrap/dist/js/bootstrap.min';
+      push @rpta, 'bower_components/handlebars/handlebars.min';
+      push @rpta, 'bower_components/underscore/underscore-min';
+      push @rpta, 'bower_components/backbone/backbone-min';
+      push @rpta, 'bower_components/backbone.marionette/lib/backbone.marionette.min';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools-core.min';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools.min';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools-interfaces.min';
+      push @rpta, 'bower_components/swp-plugins/assets/js/jquery.upload';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools.chain';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools.dao';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools.autocomplete';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools.form';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools.observer';
+      push @rpta, 'bower_components/swp-plugins/assets/js/mootools.grid';
+      push @rpta, 'bower_components/jquery-ui/ui/widgets/datepicker';
+      push @rpta, 'bower_components/jquery-timepicker-wvega/jquery.timepicker';
+      push @rpta, 'bower_components/ckeditor/ckeditor';
+      push @rpta, 'layout/app';
+      push @rpta, 'views/ambiente';
+      push @rpta, 'views/concierto';
+      push @rpta, 'views/exposicion';
+      push @rpta, 'views/servicio';
+      push @rpta, 'views/stand_up';
+      push @rpta, 'views/teatro';
+      push @rpta, 'routes/contenido';
     }
     if($constants->{'ambiente'} eq 'produccion'){
       push @rpta , 'dist/contenido.min';

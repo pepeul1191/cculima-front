@@ -21,13 +21,13 @@ sub index {
   my %data = (
     mensaje => JSON::false,
     titulo_pagina => 'Gestión de Accesos',
-    modulo => 'Accesos'
+    modulo => 'Contenido'
   );
   my %locals = (
     title => 'Home',
     data => decode('utf8', encode_json \%data),
-    menu => '[{"url" : "accesos", "nombre" : "Accesos"},{"url" : "libros", "nombre" : "Libros"}]',
-    items => '[{"subtitulo":"","items":[{"item":"Gestión de Sistemas","url":"#/sistema"},{"item":"Gestión de Usuarios","url":"#/usuario"}]}]',
+    menu => '[{"url" : "accesos", "nombre" : "Accesos"},{"url" : "contenido", "nombre" : "Contenido"}]',
+    items => '[{"subtitulo":"Contenidos","items":[{"item":"Gestión de Ambientes","url":"contenido/#/ambiente"},{"item":"Gestión de Servicios","url":"contenido/#/servicio"},{"item":"Gestión de Teatros","url":"contenido/#/teatro"},{"item":"Gestión de Exposiciones","url":"contenido/#/exposicion"},{"item":"Gestión de Conciertos","url":"contenido/#/concierto"},{"item":"Gestión de Stand Ups","url":"contenido/#/stand_up"}]}]',
   );
   my %helpers = (
     css => $helper->{'loas_css'}($ContenidoHelper->{'index_css'}()),
