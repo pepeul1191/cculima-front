@@ -6,6 +6,7 @@ our %Data = (
   ambiente => 'desarrollo',
   servicio_eventos => 'http://localhost:4000/',
   servicio_accesos => 'http://localhost:5000/',
+  servicio_cculima => 'http://localhost:5010/',
 );
 
 1;
