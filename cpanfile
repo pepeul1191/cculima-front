@@ -1,0 +1,9 @@
+requires 'JSON';
+requires 'REST::Client';
+requires 'JSON::XS';
+requires 'JSON';
+requires 'Crypt::MCrypt';
+requires 'Try::Tiny';
+requires 'DBD::SQLite';
+requires 'Data::Dumper';
+requires 'Mojolicious::Plugin::SecureCORS';

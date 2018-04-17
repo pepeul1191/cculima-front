@@ -5,10 +5,11 @@
     $ sudo apt install cpanminus
     $ curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
     $ sudo apt install libmojolicious-perl
+    $ sudo cpanm Carton
 
 ### Instalar dependencias de Perl
 
-    $ sudo cpanm JSON REST::Client JSON::XS Crypt::MCrypt Try::Tiny DBD::SQLite Data::Dumper Mojolicious::Plugin::SecureCORS
+    $ sudo carton install
 
 ### Arrancar el microservicio
 
@@ -33,3 +34,4 @@ Para imprimir variables:
 + https://stackoverflow.com/questions/44811075/perl-mojolicious-iis-routes-going-to-post-method?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 + https://github.com/pepeul1191/mojoliciuous-pp
 + https://github.com/pepeul1191/perl-dancer-mysql-gestion
++ http://search.cpan.org/~miyagawa/Carton-v1.0.28/lib/Carton.pm
