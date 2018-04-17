@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <link rel="shortcut icon" href="<%= %{$constants}{"STATIC_URL"} %>favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta charset="UTF-8">
+	<title><%= %{$locals}{"title"} %></title>
+  <%== %{$helpers}{"css"} %>
+  <script type="text/javascript">
+    var BASE_URL = '<%= %{$constants}{"BASE_URL"}%>';
+    var STATICS_URL  = '<%= %{$constants}{"STATIC_URL"}%>';
+    var MODULOS_JSON = JSON.parse('<%== %{$locals}{"menu"} %>');
+    var ITEMS_JSON = JSON.parse('<%== %{$locals}{"items"} %>');
+    var DATA = JSON.parse('<%== %{$locals}{"data"} %>');
+    var CSRF = '<%= %{$constants}{"CSRF"}%>';
+  </script>
+<body>
+	<button type="button" class="btn btn-primary btn-lg oculto" data-toggle="modal" data-target="#modal-container"  id="btnModal" >Launch demo modal</button>
+	 <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+	 <!-- Fin Modal -->
+	 <div id="app"></div>
+	 <script id="template" type="text/x-handlebars-template">
+			 {{> header}}
+			 {{> breadcrumb}}
+			 {{> contenido}}
+			 {{> footer}}
+	 </script>
+	 <script id="header-template" type="text/x-handlebars-template">
+		 <nav class="navbar navbar-default">
+		 <div class="navbar-header">
+			 <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+				 <span class="sr-only">Toggle navigation</span>
+				 <span class="icon-bar"></span>
+				 <span class="icon-bar"></span>
+				 <span class="icon-bar"></span>
+			 </button>
+			 <a href="#" class="navbar-brand"><i class="fa fa-wpexplorer icono-brand" aria-hidden="true"></i>Eventos ULima</a>
+		 </div>
+		 <div id="navbarCollapse" class="collapse navbar-collapse">
+			 <ul class="nav navbar-nav">
+				 {{{menuModulos}}}
+			 </ul>
+			 <ul class="nav navbar-nav navbar-right">
+				 <li><a href="{{BASE_URL}}login/ver">Pepe Valdivia</a></li>
+				 <li><a href="{{BASE_URL}}login/cerrar">Salir</a></li>
+			 </ul>
+		 </div>
+	 </nav>
+	 <!-- Fin Header -->
+	 </script>
+	 <script id="breadcrumb-template" type="text/x-handlebars-template"></script>
+	 <script id="contenido-template" type="text/x-handlebars-template">
+		 <div class="container content">
+			 <div class="col-md-3" id="menu-side">
+				 {{{menuSubModulos}}}
+			 </div>
+			 <div class="col-md-9" id="workspace">
+				 <!-- Inicio Yield-->
+				 {{> yield}}
+				 <!-- Fin Yield-->
+			 </div>
+		 </div>
+	 </script>
+	 <script id="footer-template" type="text/x-handlebars-template">
+		 <footer class="nb-footer">
+			 <section class="copyright">
+				 <div class="container">
+					 <div class="row">
+						 <div class="col-sm-6" style="color: #fdfdfd;">
+							 <p>Copyright © 2017. Your Company.</p>
+						 </div>
+						 <div class="col-sm-6"></div>
+					 </div>
+				 </div>
+			 </section>
+		 </footer>
+	 </script>
+	 <script id="yield" type="text/x-handlebars-template">
+			<%= content %>
+	 </script>
+	<%== %{$helpers}{"js"} %>
+</body>
+</html>

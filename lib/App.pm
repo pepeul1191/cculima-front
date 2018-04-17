@@ -24,6 +24,7 @@ sub startup {
   $r->get('/departamento/listar')->to('departamento#listar');
   $r->get('/rest/:sistema_id')->to('home#rest');
   $r->get('/servicio/listar')->to('servicio#listar');
+  $r->get('/contenido')->to('contenido#index');
 }
 
 1;
