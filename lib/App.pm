@@ -33,8 +33,10 @@ sub startup {
   $r->get('/teatro/listar')->to('teatro#listar');
   # rest-exposicion
   $r->get('/exposicion/listar')->to('exposicion#listar');
-  # rest-conicerto
+  # rest-concierto
   $r->get('/concierto/listar')->to('concierto#listar');
+  # rest-stand_up
+  $r->get('/stand_up/listar')->to('stand_up#listar');
 }
 
 1;
