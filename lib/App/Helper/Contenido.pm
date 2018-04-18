@@ -46,10 +46,13 @@ our %ContenidoHelper = (
       push @rpta, 'layout/app';
       push @rpta, 'views/_table_ambiente';
       push @rpta, 'views/ambiente';
+      push @rpta, 'views/_table_concierto';
       push @rpta, 'views/concierto';
+      push @rpta, 'views/_table_exposicion';
       push @rpta, 'views/exposicion';
       push @rpta, 'views/_table_servicio';
       push @rpta, 'views/servicio';
+      push @rpta, 'views/_table_stand_up';
       push @rpta, 'views/stand_up';
       push @rpta, 'views/_table_teatro';
       push @rpta, 'views/teatro';

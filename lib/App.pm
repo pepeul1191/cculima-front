@@ -31,6 +31,8 @@ sub startup {
   $r->get('/ambiente/listar')->to('ambiente#listar');
   # rest-teatro
   $r->get('/teatro/listar')->to('teatro#listar');
+  # rest-exposicion
+  $r->get('/exposicion/listar')->to('exposicion#listar');
 }
 
 1;
