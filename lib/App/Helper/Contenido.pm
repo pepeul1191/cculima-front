@@ -51,6 +51,7 @@ our %ContenidoHelper = (
       push @rpta, 'views/_table_servicio';
       push @rpta, 'views/servicio';
       push @rpta, 'views/stand_up';
+      push @rpta, 'views/_table_teatro';
       push @rpta, 'views/teatro';
       push @rpta, 'routes/contenido';
     }

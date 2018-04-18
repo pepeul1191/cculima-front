@@ -23,11 +23,14 @@ sub startup {
   $r->get('/')->to('home#index');
   $r->get('/departamento/listar')->to('departamento#listar');
   $r->get('/rest/:sistema_id')->to('home#rest');
-  $r->get('/servicio/listar')->to('servicio#listar');
-  # vista de gestión de contenidos
+  # vista-contenidos
   $r->get('/contenido')->to('contenido#index');
-  # servicios rest de gestión de contenidos
+  # rest-servicio
+  $r->get('/servicio/listar')->to('servicio#listar');
+  # rest-ambiente
   $r->get('/ambiente/listar')->to('ambiente#listar');
+  # rest-teatro
+  $r->get('/teatro/listar')->to('teatro#listar');
 }
 
 1;
