@@ -29,6 +29,7 @@ sub startup {
   $r->get('/servicio/listar')->to('servicio#listar');
   # rest-ambiente
   $r->get('/ambiente/listar')->to('ambiente#listar');
+  $r->post('/ambiente/subir_princial')->to('ambiente#subir_princial');
   # rest-teatro
   $r->get('/teatro/listar')->to('teatro#listar');
   # rest-exposicion

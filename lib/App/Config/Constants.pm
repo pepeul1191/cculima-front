@@ -8,6 +8,7 @@ our %Data = (
   servicio_eventos => 'http://localhost:4000/',
   servicio_accesos => 'http://localhost:5000/',
   servicio_cculima => 'http://localhost:5010/',
+  servicio_archivos => 'http://192.168.1.8:3031/',
 );
 
 1;

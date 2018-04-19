@@ -40,6 +40,7 @@ our %ContenidoHelper = (
       push @rpta, 'bower_components/swp-plugins/assets/js/mootools.form';
       push @rpta, 'bower_components/swp-plugins/assets/js/mootools.observer';
       push @rpta, 'bower_components/swp-plugins/assets/js/mootools.grid';
+      push @rpta, 'bower_components/swp-plugins/assets/js/jquery.upload';
       push @rpta, 'bower_components/jquery-ui/ui/widgets/datepicker';
       push @rpta, 'bower_components/jquery-timepicker-wvega/jquery.timepicker';
       push @rpta, 'bower_components/ckeditor/ckeditor';
