@@ -8,7 +8,7 @@ use Net::FTP;
 use Encode qw(decode encode);
 use App::Provider::Ambiente;
 use App::Provider::Archivo;
-use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
+#use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
 sub listar {
   my $self = shift;
   my %mensaje = App::Provider::Ambiente::listar();
@@ -46,8 +46,24 @@ sub subir_princial{
       or die "put failed ", $ftp->message;
     $ftp->quit;
     # mandar al servicio de archivos los metadatos del archivo subido y retonar id
-    $log->debug('2 +++++++++++++++++++++++++++++++++++++++++');
-    $self->render(text =>  'XD', status => 200);
+    my %archivo = (
+      'id' => $nombre_tmp,
+      #'nombre' => 'Corbett',
+      'nombre_generado' => $nombre_tmp . '.' . $extension,
+      'extension' => $extension,
+      'ruta' => $ftp_params->{'directorio'} . $nombre_tmp . '.' . $extension,
+      #:altura => ,
+      #:anchura => ,
+      #:mime => ,
+    );
+    my %mensaje2 = App::Provider::Archivo::crear(%archivo);
+    if($mensaje2{'codigo'} eq '200'){
+      my $rpta = %mensaje{'mensaje'};
+      $self->render(text =>  $rpta, status => 200);
+    }else{
+      my $codigo = int(%mensaje2{'codigo'});
+      $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje2), status => $codigo);
+    }
   }else{
     my $codigo = int(%mensaje{'codigo'});
     $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
