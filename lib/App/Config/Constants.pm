@@ -11,4 +11,12 @@ our %Data = (
   servicio_archivos => 'http://192.168.1.8:3031/',
 );
 
+our %FTP = (
+  host => '192.168.1.8',
+  user => 'pepe',
+  pass => 'kiki123',
+  debug => 1,
+  directorio => 'Documentos/python/archivos/static'
+);
+
 1;
