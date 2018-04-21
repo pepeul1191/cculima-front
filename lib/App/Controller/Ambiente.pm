@@ -4,11 +4,12 @@ use warnings;
 use Mojo::Base 'Mojolicious::Controller';
 use utf8;
 use JSON;
+use JSON::Parse 'parse_json';
 use Net::FTP;
 use Encode qw(decode encode);
 use App::Provider::Ambiente;
 use App::Provider::Archivo;
-#use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
+use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
 sub listar {
   my $self = shift;
   my %mensaje = App::Provider::Ambiente::listar();
@@ -58,8 +59,10 @@ sub subir_princial{
     );
     my %mensaje2 = App::Provider::Archivo::crear(%archivo);
     if($mensaje2{'codigo'} eq '200'){
-      my $rpta = %mensaje{'mensaje'};
-      $self->render(text =>  $rpta, status => 200);
+      my $temp = %mensaje2{'mensaje'};
+      my $rpta = parse_json($temp);
+      push $rpta->{'mensaje'}, $App::Config::Constants::Data{'servicio_archivos'} . $nombre_tmp . '.' . $extension;
+      $self->render(text =>  JSON::to_json $rpta, status => 200);
     }else{
       my $codigo = int(%mensaje2{'codigo'});
       $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje2), status => $codigo);
