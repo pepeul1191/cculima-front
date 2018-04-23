@@ -43,9 +43,10 @@ our %ContenidoHelper = (
       push @rpta, 'bower_components/swp-plugins/assets/js/jquery.upload';
       push @rpta, 'bower_components/jquery-ui/ui/widgets/datepicker';
       push @rpta, 'bower_components/jquery-timepicker-wvega/jquery.timepicker';
-      push @rpta, 'bower_components/ckeditor/ckeditor';
+      push @rpta, 'bower_components/ckeditor/ckeditor';;
       push @rpta, 'models/ambiente';
       push @rpta, 'layout/app';
+      push @rpta, 'views/_table_ambiente_galeria';
       push @rpta, 'views/_table_ambiente';
       push @rpta, 'views/ambiente_detalle';
       push @rpta, 'views/ambiente';
