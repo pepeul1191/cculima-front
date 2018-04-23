@@ -68,7 +68,7 @@ sub crear_detalle {
 sub editar_detalle {
   my($data) = @_;
   my %rpta = ();
-  my $url = $servicio_url . 'ambiente/guardar_detalle?data=' . $data;
+  my $url = $servicio_url . 'ambiente/editar_detalle?data=' . $data;
   my $client = REST::Client->new();
   $client->POST($url);
   if( $client->responseCode() eq '200' ){
