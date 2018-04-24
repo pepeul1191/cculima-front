@@ -7,6 +7,7 @@ use JSON;
 use JSON::Parse 'parse_json';
 use Net::FTP;
 use Encode qw(decode encode);
+use Try::Tiny;
 use App::Provider::Ambiente;
 use App::Provider::Archivo;
 use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
@@ -63,6 +64,20 @@ sub asociar_imagen_menu {
   my $imagen_menu_id = $self->param('imagen_menu_id');
   my %mensaje = ();
   %mensaje = App::Provider::Ambiente::asociar_imagen_menu($ambiente_id, $imagen_menu_id);
+  if($mensaje{'codigo'} eq '200'){
+    my $rpta = %mensaje{'mensaje'};
+    $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+  }else{
+    my $codigo = int(%mensaje{'codigo'});
+    $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+  }
+}
+
+sub galeria_guardar {
+  my $self = shift;
+  my $data = $self->param('data');
+  my %mensaje = ();
+  %mensaje = App::Provider::Ambiente::galeria_guardar($data);
   if($mensaje{'codigo'} eq '200'){
     my $rpta = %mensaje{'mensaje'};
     $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
