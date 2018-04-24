@@ -57,6 +57,21 @@ sub asociar_imagen_princial {
   }
 }
 
+sub asociar_imagen_menu {
+  my $self = shift;
+  my $ambiente_id = $self->param('ambiente_id');
+  my $imagen_menu_id = $self->param('imagen_menu_id');
+  my %mensaje = ();
+  %mensaje = App::Provider::Ambiente::asociar_imagen_menu($ambiente_id, $imagen_menu_id);
+  if($mensaje{'codigo'} eq '200'){
+    my $rpta = %mensaje{'mensaje'};
+    $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+  }else{
+    my $codigo = int(%mensaje{'codigo'});
+    $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+  }
+}
+
 sub listar_galeria {
   my $self = shift;
   $self->render(text =>  '[]', status => 200);
