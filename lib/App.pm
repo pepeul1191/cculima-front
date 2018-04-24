@@ -37,6 +37,7 @@ sub startup {
   $r->post('/ambiente/asociar_imagen_princial')->to('ambiente#asociar_imagen_princial');
   $r->post('/ambiente/asociar_imagen_menu')->to('ambiente#asociar_imagen_menu');
   $r->post('/ambiente/galeria/guardar')->to('ambiente#galeria_guardar');
+  $r->get('/ambiente/galeria/obtener_ruta_foto/:imagen_id')->to('ambiente#galeria_obtener_ruta_foto');
   # rest-teatro
   $r->get('/teatro/listar')->to('teatro#listar');
   # rest-exposicion

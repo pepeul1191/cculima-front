@@ -126,4 +126,11 @@ sub obtener {
   }
 }
 
+sub galeria_obtener_ruta_foto {
+  my $self = shift;
+  my $imagen_id = $self->param('imagen_id');
+  my $imagen_url = $App::Config::Constants::Data{'servicio_archivos'} . App::Provider::Archivo::nombre($imagen_id);
+  $self->render(text => $imagen_url, status => 200);
+}
+
 1;
