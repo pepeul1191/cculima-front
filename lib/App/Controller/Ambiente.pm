@@ -89,7 +89,38 @@ sub galeria_guardar {
 
 sub listar_galeria {
   my $self = shift;
-  $self->render(text =>  '[]', status => 200);
+  my $ambiente_id = $self->param('ambiente_id');
+  if ($ambiente_id eq 'E'){
+    $self->render(text =>  '[]', status => 200);
+  }else{
+    my %mensaje = ();
+    %mensaje = App::Provider::Ambiente::listar_galeria($ambiente_id);
+    if($mensaje{'codigo'} eq '200'){
+      my $rpta = %mensaje{'mensaje'};
+      $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+    }else{
+      my $codigo = int(%mensaje{'codigo'});
+      $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+    }
+  }
+}
+
+sub obtener {
+  my $self = shift;
+  my $ambiente_id = $self->param('ambiente_id');
+  if ($ambiente_id eq 'E'){
+    $self->render(text =>  '[]', status => 200);
+  }else{
+    my %mensaje = ();
+    %mensaje = App::Provider::Ambiente::obtener($ambiente_id);
+    if($mensaje{'codigo'} eq '200'){
+      my $rpta = %mensaje{'mensaje'};
+      $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+    }else{
+      my $codigo = int(%mensaje{'codigo'});
+      $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+    }
+  }
 }
 
 1;

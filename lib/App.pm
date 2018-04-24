@@ -31,7 +31,8 @@ sub startup {
   $r->get('/servicio/listar')->to('servicio#listar');
   # rest-ambiente
   $r->get('/ambiente/listar')->to('ambiente#listar');
-  $r->get('/ambiente/galeria/listar')->to('ambiente#listar_galeria');
+  $r->get('/ambiente/galeria/listar/:ambiente_id')->to('ambiente#listar_galeria');
+  $r->get('/ambiente/obtener/:ambiente_id')->to('ambiente#obtener');
   $r->post('/ambiente/guardar_detalle')->to('ambiente#guardar_detalle');
   $r->post('/ambiente/asociar_imagen_princial')->to('ambiente#asociar_imagen_princial');
   $r->post('/ambiente/asociar_imagen_menu')->to('ambiente#asociar_imagen_menu');
