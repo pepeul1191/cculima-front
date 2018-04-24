@@ -29,6 +29,7 @@ sub startup {
   $r->get('/contenido')->to('contenido#index');
   # rest-servicio
   $r->get('/servicio/listar')->to('servicio#listar');
+  $r->post('/servicio/guardar_detalle')->to('servicio#guardar_detalle');
   # rest-ambiente
   $r->get('/ambiente/listar')->to('ambiente#listar');
   $r->get('/ambiente/galeria/listar/:ambiente_id')->to('ambiente#listar_galeria');
