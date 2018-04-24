@@ -26,14 +26,28 @@ sub guardar_detalle {
   my $self = shift;
   my $data = $self->param('data');
   my %mensaje = ();
-  $log->debug("1 +++++++++++++++++++++++++++++++++++++++++");
+  #$log->debug("1 +++++++++++++++++++++++++++++++++++++++++");
   my $ambiente = decode_json($data);
   if($ambiente->{'_id'} eq 'E'){
     %mensaje = App::Provider::Ambiente::crear_detalle($data);
   }else{
     %mensaje = App::Provider::Ambiente::editar_detalle($data);
   }
-  $log->debug("2 +++++++++++++++++++++++++++++++++++++++++");
+  if($mensaje{'codigo'} eq '200'){
+    my $rpta = %mensaje{'mensaje'};
+    $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+  }else{
+    my $codigo = int(%mensaje{'codigo'});
+    $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+  }
+}
+
+sub asociar_imagen_princial {
+  my $self = shift;
+  my $ambiente_id = $self->param('ambiente_id');
+  my $imagen_principal_id = $self->param('imagen_principal_id');
+  my %mensaje = ();
+  %mensaje = App::Provider::Ambiente::asociar_imagen_princial($ambiente_id, $imagen_principal_id);
   if($mensaje{'codigo'} eq '200'){
     my $rpta = %mensaje{'mensaje'};
     $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);

@@ -33,6 +33,7 @@ sub startup {
   $r->get('/ambiente/listar')->to('ambiente#listar');
   $r->get('/ambiente/galeria/listar')->to('ambiente#listar_galeria');
   $r->post('/ambiente/guardar_detalle')->to('ambiente#guardar_detalle');
+  $r->post('/ambiente/asociar_imagen_princial')->to('ambiente#asociar_imagen_princial');
   # rest-teatro
   $r->get('/teatro/listar')->to('teatro#listar');
   # rest-exposicion
