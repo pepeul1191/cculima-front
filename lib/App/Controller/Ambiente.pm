@@ -10,7 +10,8 @@ use Encode qw(decode encode);
 use Try::Tiny;
 use App::Provider::Ambiente;
 use App::Provider::Archivo;
-use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
+use App::Config::Constants;
+#use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
 sub listar {
   my $self = shift;
   my %mensaje = App::Provider::Ambiente::listar();
@@ -114,8 +115,10 @@ sub obtener {
     my %mensaje = ();
     %mensaje = App::Provider::Ambiente::obtener($ambiente_id);
     if($mensaje{'codigo'} eq '200'){
-      my $rpta = %mensaje{'mensaje'};
-      $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+      my $rpta = parse_json($mensaje{'mensaje'});
+      $rpta->{'foto_principal_url'} = $App::Config::Constants::Data{'servicio_archivos'} . App::Provider::Archivo::nombre($rpta->{'foto_principal'});
+      $rpta->{'foto_menu_url'} = $App::Config::Constants::Data{'servicio_archivos'} . App::Provider::Archivo::nombre($rpta->{'foto_menu'});
+      $self->render(text =>  Encode::decode('utf8', JSON::to_json $rpta), status => 200);
     }else{
       my $codigo = int(%mensaje{'codigo'});
       $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
