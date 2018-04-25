@@ -8,7 +8,7 @@ use JSON::Parse 'parse_json';
 use Encode qw(decode encode);
 use App::Provider::Servicio;
 use App::Provider::Archivo;
-use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
+#use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
 sub listar {
   my $self = shift;
   my %mensaje = App::Provider::Servicio::listar();
@@ -66,9 +66,6 @@ sub obtener {
     %mensaje = App::Provider::Servicio::obtener($servicio_id);
     if($mensaje{'codigo'} eq '200'){
       my $rpta = parse_json($mensaje{'mensaje'});
-      $log->debug("1 +++++++++++++++++++++++++++++++++++++++++");
-      print(Dumper($rpta));
-      $log->debug("2 +++++++++++++++++++++++++++++++++++++++++");
       $rpta->{'foto_url'} = $App::Config::Constants::Data{'servicio_archivos'} . App::Provider::Archivo::nombre($rpta->{'foto_id'});
       $self->render(text =>  Encode::decode('utf8', JSON::to_json $rpta), status => 200);
     }else{
