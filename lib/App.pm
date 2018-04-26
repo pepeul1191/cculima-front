@@ -45,6 +45,8 @@ sub startup {
   $r->post('/ambiente/guardar')->to('ambiente#guardar');
   # rest-teatro
   $r->get('/teatro/listar')->to('teatro#listar');
+  $r->get('/teatro/elenco/listar/:teatro_id')->to('teatro#listar_elenco');
+  $r->get('/teatro/equipo/listar/:teatro_id')->to('teatro#listar_equipo');
   # rest-exposicion
   $r->get('/exposicion/listar')->to('exposicion#listar');
   # rest-concierto

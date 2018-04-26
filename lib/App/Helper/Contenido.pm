@@ -14,6 +14,7 @@ our %ContenidoHelper = (
       push @rpta, 'bower_components/swp-plugins/assets/css/mootools.validations';
       push @rpta, 'bower_components/jquery-ui/themes/base/datepicker';
       push @rpta, 'bower_components/jquery-timepicker-wvega/jquery.timepicker',
+      push @rpta, 'assets/css/vanillaCalendar';
       push @rpta, 'assets/css/styles';
     }
     if($constants->{'ambiente'} eq 'produccion'){
@@ -43,9 +44,12 @@ our %ContenidoHelper = (
       push @rpta, 'bower_components/swp-plugins/assets/js/jquery.upload';
       push @rpta, 'bower_components/jquery-ui/ui/widgets/datepicker';
       push @rpta, 'bower_components/jquery-timepicker-wvega/jquery.timepicker';
-      push @rpta, 'bower_components/ckeditor/ckeditor';;
+      push @rpta, 'bower_components/ckeditor/ckeditor';
+      push @rpta, 'assets/js/vanillaCalendarModel';
+      push @rpta, 'assets/js/vanillaCalendar';
       push @rpta, 'models/ambiente';
       push @rpta, 'models/servicio';
+      push @rpta, 'models/teatro';
       push @rpta, 'layout/app';
       push @rpta, 'views/_table_ambiente_galeria';
       push @rpta, 'views/_table_ambiente';
@@ -60,7 +64,10 @@ our %ContenidoHelper = (
       push @rpta, 'views/servicio';
       push @rpta, 'views/_table_stand_up';
       push @rpta, 'views/stand_up';
+      push @rpta, 'views/_table_teatro_elenco';
+      push @rpta, 'views/_table_teatro_equipo';
       push @rpta, 'views/_table_teatro';
+      push @rpta, 'views/teatro_detalle';
       push @rpta, 'views/teatro';
       push @rpta, 'routes/contenido';
     }
