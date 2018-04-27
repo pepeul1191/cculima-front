@@ -239,4 +239,33 @@ sub asociar_imagen_menu {
   return %rpta;
 }
 
+sub asociar_imagen_detalle {
+  my($teatro_id, $imagen_detalle_id) = @_;
+  my %rpta = ();
+  my $client = REST::Client->new();
+  my $url = $servicio_url . 'teatro/asociar_imagen_detalle?teatro_id=' . $teatro_id . '&imagen_detalle_id=' . $imagen_detalle_id;
+  $client->POST($url);
+  if( $client->responseCode() eq '200' ){
+    $rpta{'tipo_mensaje'} = 'success';
+    $rpta{'codigo'} = 200;
+    $rpta{'mensaje'} = $client->responseContent();
+  } elsif( $client->responseCode() eq '500' ){
+    $rpta{'tipo_mensaje'} = 'error';
+    $rpta{'codigo'} = 500;
+    my @temp = ('Se ha producido un error en el cliente REST', '' . $client->responseContent());
+    $rpta{'mensaje'} = [@temp];
+  } elsif( $client->responseCode() eq '404' ){
+    $rpta{'tipo_mensaje'} = 'error';
+    $rpta{'codigo'} = 404;
+    my @temp = ('Recurso no encontrado en servicio', '' . $client->responseContent());
+    $rpta{'mensaje'} = [@temp];
+  }else{
+    $rpta{'tipo_mensaje'} = 'error';
+    $rpta{'codigo'} = 500;
+    my @temp = ('Error: Excepción de servicio no capturada', '' . $client->responseContent());
+    $rpta{'mensaje'} = [@temp];
+  }
+  return %rpta;
+}
+
 1;
