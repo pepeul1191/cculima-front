@@ -35,6 +35,7 @@ sub startup {
   $r->post('/servicio/guardar')->to('servicio#guardar');
   # rest-ambiente
   $r->get('/ambiente/listar')->to('ambiente#listar');
+  $r->get('/ambiente/listar_select')->to('ambiente#listar_select');
   $r->get('/ambiente/galeria/listar/:ambiente_id')->to('ambiente#listar_galeria');
   $r->get('/ambiente/obtener/:ambiente_id')->to('ambiente#obtener');
   $r->post('/ambiente/guardar_detalle')->to('ambiente#guardar_detalle');
@@ -47,6 +48,7 @@ sub startup {
   $r->get('/teatro/listar')->to('teatro#listar');
   $r->get('/teatro/elenco/listar/:teatro_id')->to('teatro#listar_elenco');
   $r->get('/teatro/equipo/listar/:teatro_id')->to('teatro#listar_equipo');
+  $r->post('/teatro/guardar_detalle')->to('teatro#guardar_detalle');
   # rest-exposicion
   $r->get('/exposicion/listar')->to('exposicion#listar');
   # rest-concierto

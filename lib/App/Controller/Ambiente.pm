@@ -24,6 +24,18 @@ sub listar {
   }
 }
 
+sub listar_select {
+  my $self = shift;
+  my %mensaje = App::Provider::Ambiente::listar_select();
+  if($mensaje{'codigo'} eq '200'){
+    my $rpta = %mensaje{'mensaje'};
+    $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+  }else{
+    my $codigo = int(%mensaje{'codigo'});
+    $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+  }
+}
+
 sub guardar_detalle {
   my $self = shift;
   my $data = $self->param('data');
