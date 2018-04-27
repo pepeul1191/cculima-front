@@ -1,6 +1,7 @@
 requires 'JSON';
 requires 'REST::Client';
 requires 'JSON::XS';
+requires 'JSON::Parse';
 requires 'JSON';
 requires 'Try::Tiny';
 requires 'DBD::SQLite';
