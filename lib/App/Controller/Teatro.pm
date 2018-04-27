@@ -90,4 +90,19 @@ sub guardar_elenco {
   }
 }
 
+sub guardar_equipo {
+  my $self = shift;
+  my $data = $self->param('data');
+  my %mensaje = ();
+  my $ambiente = decode_json($data);
+  %mensaje = App::Provider::Teatro::guardar_equipo($data);
+  if($mensaje{'codigo'} eq '200'){
+    my $rpta = %mensaje{'mensaje'};
+    $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+  }else{
+    my $codigo = int(%mensaje{'codigo'});
+    $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+  }
+}
+
 1;
