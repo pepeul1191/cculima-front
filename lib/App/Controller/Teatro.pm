@@ -4,8 +4,10 @@ use warnings;
 use Mojo::Base 'Mojolicious::Controller';
 use utf8;
 use JSON;
+use JSON::Parse 'parse_json';
 use Encode qw(decode encode);
 use App::Provider::Teatro;
+use App::Provider::Archivo;
 #use Mojo::Log; use Data::Dumper;my $log = Mojo::Log->new;
 sub listar {
   my $self = shift;
@@ -147,6 +149,44 @@ sub asociar_calendario {
   }else{
     my $codigo = int(%mensaje{'codigo'});
     $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+  }
+}
+
+sub obtener {
+  my $self = shift;
+  my $teatro_id = $self->param('teatro_id');
+  if ($teatro_id eq 'E'){
+    $self->render(text =>  '[]', status => 200);
+  }else{
+    my %mensaje = ();
+    %mensaje = App::Provider::Teatro::obtener($teatro_id);
+    if($mensaje{'codigo'} eq '200'){
+      my $rpta = parse_json($mensaje{'mensaje'});
+      $rpta->{'foto_menu_url'} = $App::Config::Constants::Data{'servicio_archivos'} . App::Provider::Archivo::nombre($rpta->{'foto_menu'});
+      $rpta->{'foto_detalle_url'} = $App::Config::Constants::Data{'servicio_archivos'} . App::Provider::Archivo::nombre($rpta->{'foto_detalle'});
+      $self->render(text =>  Encode::decode('utf8', JSON::to_json $rpta), status => 200);
+    }else{
+      my $codigo = int(%mensaje{'codigo'});
+      $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+    }
+  }
+}
+
+sub obtener_calendario {
+  my $self = shift;
+  my $teatro_id = $self->param('teatro_id');
+  if ($teatro_id eq 'E'){
+    $self->render(text =>  '[]', status => 200);
+  }else{
+    my %mensaje = ();
+    %mensaje = App::Provider::Teatro::obtener_calendario($teatro_id);
+    if($mensaje{'codigo'} eq '200'){
+      my $rpta = %mensaje{'mensaje'};
+      $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+    }else{
+      my $codigo = int(%mensaje{'codigo'});
+      $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+    }
   }
 }
 

@@ -48,6 +48,8 @@ sub startup {
   $r->get('/teatro/listar')->to('teatro#listar');
   $r->get('/teatro/elenco/listar/:teatro_id')->to('teatro#listar_elenco');
   $r->get('/teatro/equipo/listar/:teatro_id')->to('teatro#listar_equipo');
+  $r->get('/teatro/obtener_calendario/:teatro_id')->to('teatro#obtener_calendario');
+  $r->get('/teatro/obtener/:teatro_id')->to('teatro#obtener');
   $r->post('/teatro/guardar_detalle')->to('teatro#guardar_detalle');
   $r->post('/teatro/elenco/guardar')->to('teatro#guardar_elenco');
   $r->post('/teatro/equipo/guardar')->to('teatro#guardar_equipo');
