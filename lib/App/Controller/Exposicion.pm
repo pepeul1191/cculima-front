@@ -39,5 +39,19 @@ sub guardar_detalle {
   }
 }
 
+sub asociar_calendario {
+  my $self = shift;
+  my $exposicion_id = $self->param('exposicion_id');
+  my $fechas = $self->param('fechas');
+  my %mensaje = ();
+  %mensaje = App::Provider::Exposicion::asociar_calendario($exposicion_id, $fechas);
+  if($mensaje{'codigo'} eq '200'){
+    my $rpta = %mensaje{'mensaje'};
+    $self->render(text =>  Encode::decode('utf8', $rpta), status => 200);
+  }else{
+    my $codigo = int(%mensaje{'codigo'});
+    $self->render(text => Encode::decode('utf8', JSON::to_json \%mensaje), status => $codigo);
+  }
+}
 
 1;
