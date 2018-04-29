@@ -62,6 +62,7 @@ sub startup {
   $r->post('/exposicion/guardar_detalle')->to('exposicion#guardar_detalle');
   $r->post('/exposicion/asociar_calendario')->to('exposicion#asociar_calendario');
   $r->post('/exposicion/asociar_imagen_menu')->to('exposicion#asociar_imagen_menu');
+  $r->post('/exposicion/asociar_imagen_detalle')->to('exposicion#asociar_imagen_detalle');
   # rest-concierto
   $r->get('/concierto/listar')->to('concierto#listar');
   # rest-stand_up
