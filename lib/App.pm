@@ -68,6 +68,13 @@ sub startup {
   $r->post('/exposicion/guardar')->to('exposicion#guardar');
   # rest-concierto
   $r->get('/concierto/listar')->to('concierto#listar');
+  $r->post('/concierto/guardar_detalle')->to('concierto#guardar_detalle');
+  $r->post('/concierto/asociar_calendario')->to('concierto#asociar_calendario');
+  $r->post('/concierto/asociar_imagen_menu')->to('concierto#asociar_imagen_menu');
+  $r->post('/concierto/asociar_imagen_detalle')->to('concierto#asociar_imagen_detalle');
+  $r->get('/concierto/obtener/:concierto_id')->to('concierto#obtener');
+  $r->get('/concierto/obtener_calendario/:concierto_id')->to('concierto#obtener_calendario');
+  $r->post('/concierto/guardar')->to('concierto#guardar');
   # rest-stand_up
   $r->get('/stand_up/listar')->to('stand_up#listar');
 }

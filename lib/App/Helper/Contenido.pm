@@ -51,12 +51,14 @@ our %ContenidoHelper = (
       push @rpta, 'models/servicio';
       push @rpta, 'models/teatro';
       push @rpta, 'models/exposicion';
+      push @rpta, 'models/concierto';
       push @rpta, 'layout/app';
       push @rpta, 'views/_table_ambiente_galeria';
       push @rpta, 'views/_table_ambiente';
       push @rpta, 'views/ambiente_detalle';
       push @rpta, 'views/ambiente';
       push @rpta, 'views/_table_concierto';
+      push @rpta, 'views/concierto_detalle';
       push @rpta, 'views/concierto';
       push @rpta, 'views/_table_exposicion';
       push @rpta, 'views/exposicion_detalle';
