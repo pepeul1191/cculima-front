@@ -77,6 +77,13 @@ sub startup {
   $r->post('/concierto/guardar')->to('concierto#guardar');
   # rest-stand_up
   $r->get('/stand_up/listar')->to('stand_up#listar');
+  $r->post('/stand_up/guardar_detalle')->to('stand_up#guardar_detalle');
+  $r->post('/stand_up/asociar_calendario')->to('stand_up#asociar_calendario');
+  $r->post('/stand_up/asociar_imagen_menu')->to('stand_up#asociar_imagen_menu');
+  $r->post('/stand_up/asociar_imagen_detalle')->to('stand_up#asociar_imagen_detalle');
+  $r->get('/stand_up/obtener/:stand_up_id')->to('stand_up#obtener');
+  $r->get('/stand_up/obtener_calendario/:stand_up_id')->to('stand_up#obtener_calendario');
+  $r->post('/stand_up/guardar')->to('stand_up#guardar');
 }
 
 1;
