@@ -18,7 +18,7 @@ our %ContenidoHelper = (
       push @rpta, 'assets/css/styles';
     }
     if($constants->{'ambiente'} eq 'produccion'){
-      push @rpta , 'dist/contenido.min';
+      push @rpta , 'dist/contenido-min';
     }
     return @rpta;
   },
@@ -78,7 +78,8 @@ our %ContenidoHelper = (
       push @rpta, 'routes/contenido';
     }
     if($constants->{'ambiente'} eq 'produccion'){
-      push @rpta , 'dist/contenido.min';
+      push @rpta, 'bower_components/ckeditor/ckeditor';
+      push @rpta , 'dist/contenido-min';
     }
     return @rpta;
   },
